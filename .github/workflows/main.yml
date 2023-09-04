@@ -1,9 +1,5 @@
 name: CI ImplementntacionDummie
-
-on:
-  push:
-    branches:
-      - feature-ms-RubenJorquera-ImplementacionDummie
+on: [push]
 
 jobs: 
 
