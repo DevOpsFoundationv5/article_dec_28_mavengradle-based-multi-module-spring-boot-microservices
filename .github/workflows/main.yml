@@ -1,0 +1,53 @@
+name: CI ImplementntacionDummie
+
+on:
+  push:
+    branches:
+      - feature-ms-RubenJorquera-ImplementacionDummie
+
+jobs: 
+
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.5.3
+    
+    - name: Setup Java JDK
+      uses: actions/setup-java@v3.12.0
+      with:
+        java-version: '11'
+        distribution: 'zulu'
+
+    - name: Compile Gradle
+      run: |
+        cd service-a
+        chmod +x gradlew
+        ./gradlew build
+      working-directory: ${{ github.workspace }}
+
+    - name: Run Unit Tests and Generate Coverage Report
+      run: |
+        cd service-a  # Asegúrate de estar en el directorio correcto
+        ./gradlew test jacocoTestReport
+      working-directory: ${{ github.workspace }}
+
+    - name: Upload Coverage Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: coverage-report
+        path: service-a/build/reports/jacoco/test/html/index.html  # Ajusta la ruta al informe de cobertura
+
+    - name: Check Coverage Threshold
+      run: |
+        COVERAGE_THRESHOLD=85  # Umbral de cobertura deseado (puedes ajustarlo)
+        ACTUAL_COVERAGE=$(grep "Overall coverage rate" service-a/build/reports/jacoco/test/html/index.html | sed -n 's/.*>\(.*\)%<\/.*/\1/p')
+        
+        if [ $(echo "$ACTUAL_COVERAGE >= $COVERAGE_THRESHOLD" | bc -l) -eq 0 ]; then
+          echo "La cobertura de pruebas unitarias no cumple con el umbral mínimo de $COVERAGE_THRESHOLD%."
+          # Puedes agregar comandos aquí para ajustar el umbral o tomar otras medidas
+          exit 1
+        else
+          echo "La cobertura de pruebas unitarias es del $ACTUAL_COVERAGE%, cumple con el umbral mínimo de $COVERAGE_THRESHOLD%."
+        fi
