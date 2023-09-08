@@ -15,7 +15,7 @@ jobs:
         docker-compose up -d
         docker ps
 
-    - name: Ejecutar pruebas de aceptación con Postman
+    - name: Ejecutar pruebas de aceptación con Postman 
       uses: matt-ball/newman-action@v1.0.4
       with:
         # Ejecuta las pruebas de Postman con Newman
