@@ -7,10 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Configurar Docker
-      uses: docker://stable
-      with:
-        docker-version: '20.10.7' # Versión de Docker que desees utilizar
+    - name: Checkout
+      uses: actions/checkout@v3.5.3
         
     - name: Despliegue con Docker Compose
       run: |
