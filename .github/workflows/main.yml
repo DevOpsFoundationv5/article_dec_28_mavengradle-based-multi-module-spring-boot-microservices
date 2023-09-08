@@ -25,7 +25,6 @@ jobs:
    
     - name: Docker Tag and Push
       run: |
-        docker images | grep spring-multi-module
         # Etiquetar y empujar la imagen para service-a
         docker tag rubejorquera/service-a:latest ${{ secrets.DOCKER_USERNAME }}/service-a:latest
         echo "Imagen etiquetada para service-a: ${{ secrets.DOCKER_USERNAME }}/service-a:latest"
@@ -34,11 +33,12 @@ jobs:
         # Etiquetar y empujar la imagen para service-b
         docker tag rubejorquera/service-b:latest ${{ secrets.DOCKER_USERNAME }}/service-b:latest
         echo "Imagen etiquetada para service-b: ${{ secrets.DOCKER_USERNAME }}/service-b:latest"
-      
+       
     
         # Etiquetar y empujar la imagen para service-c
         docker tag rubejorquera/service-c:latest ${{ secrets.DOCKER_USERNAME }}/service-c:latest
         echo "Imagen etiquetada para service-c: ${{ secrets.DOCKER_USERNAME }}/service-c:latest"
+        
   
 
 
