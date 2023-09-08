@@ -1,0 +1,64 @@
+{
+  "info": {
+    "_postman_id": "unique-identifier",
+    "name": "Ejemplo de Colección de Pruebas",
+    "description": "Colección de pruebas de aceptación para mi aplicación",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Prueba 1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "http://service-a:8081/endpoint1",
+          "host": [
+            "service-a"
+          ],
+          "port": "8081",
+          "path": [
+            "endpoint1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Prueba 2",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": "pm.test('Response time is less than 500ms', function () { pm.response.to.have.responseTime(500); });"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "http://service-a:8081/endpoint2",
+          "host": [
+            "service-a"
+          ],
+          "port": "8081",
+          "path": [
+            "endpoint2"
+          ]
+        }
+      }
+    }
+  ]
+}
