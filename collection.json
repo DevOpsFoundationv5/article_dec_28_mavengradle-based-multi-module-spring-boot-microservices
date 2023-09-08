@@ -22,12 +22,17 @@
         "header": [],
         "body": {},
         "url": {
-          "raw": "http://{{SERVICE_A_IP}}:8081/greeting",
-          "host": ["{{SERVICE_A_IP}}"],
+          "raw": "http://service-a:8081/greeting",
+          "host": [
+            "service-a"
+          ],
           "port": "8081",
-          "path": ["greeting"]
+          "path": [
+            "endpoint1"
+          ]
         }
       }
     }
   ]
 }
+
