@@ -19,7 +19,7 @@ jobs:
       id: run-newman
       uses: anthonyvscode/newman-action@v1
       with:
-        collection: path/to/your/collection.json  # Ruta a tu archivo collection.json local
+        collection: collection.json  # Ruta a tu archivo collection.json local
         reporters: cli
 
     - name: Output summary to console
