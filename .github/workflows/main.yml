@@ -25,19 +25,19 @@ jobs:
    
     - name: Docker Tag and Push
       run: |
-        # Etiquetar y empujar la imagen para service-a
-        docker tag rubejorquera/service-a:latest ${{ secrets.DOCKER_USERNAME }}/service-a:latest
-        echo "Imagen etiquetada para service-a: ${{ secrets.DOCKER_USERNAME }}/service-a:latest"
+        docker images | grep spring-multi-module
+        # Se Cambian de nombre de usuario a las imagenes
+        docker tag narramadan/spring-multi-module-service-service-a:latest rubejorquera/spring-multi-module-service-service-a:latest
+        docker tag narramadan/spring-multi-module-service-service-b:latest rubejorquera/spring-multi-module-service-service-b:latest
+        docker tag narramadan/spring-multi-module-service-service-c:latest rubejorquera/spring-multi-module-service-service-c:latest
+
+        docker images | grep spring-multi-module
+
         
-    
-        # Etiquetar y empujar la imagen para service-b
-        docker tag rubejorquera/service-b:latest ${{ secrets.DOCKER_USERNAME }}/service-b:latest
-        echo "Imagen etiquetada para service-b: ${{ secrets.DOCKER_USERNAME }}/service-b:latest"
-       
-    
-        # Etiquetar y empujar la imagen para service-c
-        docker tag rubejorquera/service-c:latest ${{ secrets.DOCKER_USERNAME }}/service-c:latest
-        echo "Imagen etiquetada para service-c: ${{ secrets.DOCKER_USERNAME }}/service-c:latest"
+
+        
+
+
         
   
 
