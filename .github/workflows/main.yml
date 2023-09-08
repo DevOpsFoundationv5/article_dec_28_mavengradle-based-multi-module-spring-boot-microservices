@@ -15,17 +15,12 @@ jobs:
         docker-compose up -d
         docker ps
 
-    - name: Set IP Address
-      run: echo "::set-env name=SERVICE_A_IP::$(hostname -I | awk '{print $1}')"
-    
-    - name: Run Postman Tests
-      uses: anthonyvscode/newman-action@v1
+    - name: Ejecutar pruebas de aceptación con Postman
+      uses: matt-ball/newman-action@v1.0.4
       with:
+        # Ruta a tu archivo de colección de Postman (por ejemplo, collection.json)
         collection: collection.json
-        reporters: cli
-      env:
-        SERVICE_A_IP: ${{ env.SERVICE_A_IP }}
-      
+          
 
 
         
