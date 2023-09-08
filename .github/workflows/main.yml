@@ -22,11 +22,24 @@ jobs:
         ./gradlew -q projects  # Listar proyectos Gradle
         ./gradlew clean build bootBuildImage  # Construir y crear imágenes Docker para todos los proyectos desde el proyecto padre
 
-    - name: Docker Tag
+   
+    - name: Docker Tag and Push
       run: |
-        docker images | grep spring-multi-modul
-
-
+        docker images | grep spring-multi-module
+        # Etiquetar y empujar la imagen para service-a
+        docker tag rubejorquera/service-a:latest ${{ secrets.DOCKER_USERNAME }}/service-a:latest
+        echo "Imagen etiquetada para service-a: ${{ secrets.DOCKER_USERNAME }}/service-a:latest"
+        
+    
+        # Etiquetar y empujar la imagen para service-b
+        docker tag rubejorquera/service-b:latest ${{ secrets.DOCKER_USERNAME }}/service-b:latest
+        echo "Imagen etiquetada para service-b: ${{ secrets.DOCKER_USERNAME }}/service-b:latest"
+      
+    
+        # Etiquetar y empujar la imagen para service-c
+        docker tag rubejorquera/service-c:latest ${{ secrets.DOCKER_USERNAME }}/service-c:latest
+        echo "Imagen etiquetada para service-c: ${{ secrets.DOCKER_USERNAME }}/service-c:latest"
+  
 
 
 
