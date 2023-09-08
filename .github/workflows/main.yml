@@ -20,7 +20,6 @@ jobs:
       # uses: anthonyvscode/newman-action@cdca06b722f82f1a6e2ff4803960dc61c9f46240
       uses: anthonyvscode/newman-action@v1.1
       with:
-        # Ejecuta las pruebas de Postman con Newman
         collection: collection.json
         
 
