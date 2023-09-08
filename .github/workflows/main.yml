@@ -25,13 +25,13 @@ jobs:
    
     - name: Docker Tag and Push
       run: |
-        docker images | grep spring-multi-module
+        
         # Se Cambian de nombre de usuario a las imagenes
         docker tag narramadan/spring-multi-module-service-service-a:latest rubejorquera/spring-multi-module-service-service-a:latest
         docker tag narramadan/spring-multi-module-service-service-b:latest rubejorquera/spring-multi-module-service-service-b:latest
         docker tag narramadan/spring-multi-module-service-service-c:latest rubejorquera/spring-multi-module-service-service-c:latest
 
-        docker images | grep spring-multi-module
+        
 
         
 
