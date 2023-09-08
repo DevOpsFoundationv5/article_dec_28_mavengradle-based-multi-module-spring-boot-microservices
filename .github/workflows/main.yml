@@ -21,7 +21,6 @@ jobs:
         chmod +x gradlew
         ./gradlew -q projects  # Listar proyectos Gradle
         ./gradlew clean build bootBuildImage  # Construir y crear imágenes Docker para todos los proyectos desde el proyecto padre
-        ./gradlew clean :service-a:bootRun  # Ejecutar la tarea bootRun en service-a
-        ./gradlew clean :service-a:build :service-a:bootBuildImage  # Realizar una serie de acciones en service-a
+
 
 
