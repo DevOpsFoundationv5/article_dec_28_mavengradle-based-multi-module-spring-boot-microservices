@@ -15,15 +15,17 @@ jobs:
         docker-compose up -d
         docker ps
 
-    - name: Ejecutar pruebas de aceptación con Postman (Local Collection)
-      id: run-newman
+    - name: Set IP Address
+      run: echo "::set-env name=SERVICE_A_IP::$(hostname -I | awk '{print $1}')"
+    
+    - name: Run Postman Tests
       uses: anthonyvscode/newman-action@v1
       with:
-        collection: collection.json  # Ruta a tu archivo collection.json local
+        collection: collection.json
         reporters: cli
-
-    - name: Output summary to console
-      run: echo ${{ steps.run-newman.outputs.summary }}
+      env:
+        SERVICE_A_IP: ${{ env.SERVICE_A_IP }}
+      
 
 
         
