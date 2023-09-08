@@ -22,5 +22,12 @@ jobs:
         ./gradlew -q projects  # Listar proyectos Gradle
         ./gradlew clean build bootBuildImage  # Construir y crear imágenes Docker para todos los proyectos desde el proyecto padre
 
+    - name: Analisis SonarCloud
+      run: |
+        chmod +x gradlew
+        ./gradlew sonar -Dsonar.token=${{ secrets.TOKEN_SONARCLOUD }} # Genera el análisis con el token correspondiente
+
+
+
 
 
