@@ -15,13 +15,15 @@ jobs:
         docker-compose up -d
         docker ps
 
-    - name: Newman CLI (Postman) Action
-      # You may pin to the exact commit or the version.
-      # uses: anthonyvscode/newman-action@cdca06b722f82f1a6e2ff4803960dc61c9f46240
-      uses: anthonyvscode/newman-action@v1.1
+    - name: Ejecutar pruebas de aceptación con Postman (Local Collection)
+      id: run-newman
+      uses: anthonyvscode/newman-action@v1
       with:
-        collection: collection.json
-        
+        collection: path/to/your/collection.json  # Ruta a tu archivo collection.json local
+        reporters: cli
+
+    - name: Output summary to console
+      run: echo ${{ steps.run-newman.outputs.summary }}
 
 
         
