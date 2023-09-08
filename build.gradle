@@ -44,8 +44,8 @@ subprojects {
 
 	sonarqube {
           properties {
-            property "sonar.projectKey", "MatiasJorquera_pet-clinic"
-            property "sonar.organization", "matiasjorquera"
+            property "sonar.projectKey", "DevOpsFoundationv5_article_dec_28_mavengradle-based-multi-module-spring-boot-microservices"
+            property "sonar.organization", "devopsfoundationv5"
             property "sonar.host.url", "https://sonarcloud.io"
           }
         }
